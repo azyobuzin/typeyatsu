@@ -1,0 +1,20 @@
+{
+  "name": "typeyatsu",
+  "version": "1.0.0",
+  "authors": [
+    "azyobuzin <azyobuzin@users.sourceforge.jp>"
+  ],
+  "main": "main.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tmlib.js": "~0.5.2",
+    "winjs": "#release/4.0.0-preview"
+  }
+}

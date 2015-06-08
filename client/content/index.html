@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>タイピングバトルするやつ</title>
+		<link rel="stylesheet" href="../bower_components/winjs/css/ui-dark.css">
+		<style>
+			body {
+				padding-top: 100px;
+				text-align: center;
+			}
+			h1 {
+				margin-bottom: 40px;
+			}
+			button {
+				width: 100%;
+			}
+			div {
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 20px;
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>タイピングバトルするやつ</h1>
+		<div><button onclick="location.href='rooms.html'">スタート</button></div>
+		<div><button onclick="require('ipc').send('openLeaflet')">説明</button></div>
+	</body>
+</html>
