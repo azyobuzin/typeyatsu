@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"outDir": "dist"
+	},
+	"files": [
+		"src/common.ts",
+		"src/index.ts",
+		"src/rooms.ts"
+	]
+}

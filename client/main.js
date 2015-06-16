@@ -1,4 +1,4 @@
-/// <reference path="../typings/node/node.d.ts"/>
+/// <reference path="typings/bundle.d.ts" />
 
 var app = require("app");
 var BrowserWindow = require("browser-window");
@@ -10,7 +10,7 @@ global.remoteServer = typeRemote;
 var mainWindow = null;
 
 app.on("ready", function () {
-    mainWindow = new BrowserWindow({ "web-preferences": { "web-security": false } });
+    mainWindow = new BrowserWindow({ width: 800, height: 600 });
     mainWindow.loadUrl("file://" + __dirname + "/content/index.html");
     //mainWindow.openDevTools();
     mainWindow.on("closed", function () { app.quit(); });

@@ -1,0 +1,24 @@
+{
+  "repos": [
+    {
+      "url": "https://github.com/borisyankov/DefinitelyTyped.git",
+      "ref": "master"
+    }
+  ],
+  "path": "typings",
+  "bundle": "typings/bundle.d.ts",
+  "link": {
+    "npm": {
+      "include": true
+    }
+  },
+  "dependencies": {
+    "typings/winjs/winjs.d.ts": {
+      "repo": "https://github.com/winjs/winjs.git",
+      "ref": "3496d3b1fb2656de6b2d5d8b9a978509be46c3a4"
+    },
+    "node/node.d.ts": {
+      "ref": "066819c65ff561ca109955e0b725c253e243f0a2"
+    }
+  }
+}
