@@ -1,7 +1,7 @@
 {
   "repos": [
     {
-      "url": "https://github.com/borisyankov/DefinitelyTyped.git",
+      "url": "https://github.com/chbrown/DefinitelyTyped.git",
       "ref": "master"
     }
   ],
@@ -14,10 +14,9 @@
   },
   "dependencies": {
     "socket.io/socket.io.d.ts": {
-      "ref": "e18e130e2188348070f98d92b98c0ea481c4a086"
+      "ref": "2b0842a03307dc8dd56d29a7ca34807736bbf0c9"
     },
     "node/node.d.ts": {
-      "repo": "https://github.com/chbrown/DefinitelyTyped.git",
       "ref": "2b0842a03307dc8dd56d29a7ca34807736bbf0c9"
     }
   }

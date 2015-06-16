@@ -4,9 +4,7 @@
 		"target": "es5",
 		"outDir": "dist"
 	},
-	"files": [
-		"src/common.ts",
-		"src/index.ts",
-		"src/rooms.ts"
-	]
+	"filesGlobs": [
+        "./src/**/*.ts"
+    ]
 }

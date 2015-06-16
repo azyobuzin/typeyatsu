@@ -1,7 +1,7 @@
 {
   "repos": [
     {
-      "url": "https://github.com/borisyankov/DefinitelyTyped.git",
+      "url": "https://github.com/chbrown/DefinitelyTyped.git",
       "ref": "master"
     }
   ],
@@ -18,7 +18,19 @@
       "ref": "3496d3b1fb2656de6b2d5d8b9a978509be46c3a4"
     },
     "node/node.d.ts": {
-      "ref": "066819c65ff561ca109955e0b725c253e243f0a2"
+      "ref": "2b0842a03307dc8dd56d29a7ca34807736bbf0c9"
+    },
+    "github-electron/github-electron.d.ts": {
+      "ref": "2b0842a03307dc8dd56d29a7ca34807736bbf0c9"
+    },
+    "github-electron/github-electron-main.d.ts": {
+      "ref": "2b0842a03307dc8dd56d29a7ca34807736bbf0c9"
+    },
+    "github-electron/github-electron-renderer.d.ts": {
+      "ref": "2b0842a03307dc8dd56d29a7ca34807736bbf0c9"
+    },
+    "socket.io-client/socket.io-client.d.ts": {
+      "ref": "2b0842a03307dc8dd56d29a7ca34807736bbf0c9"
     }
   }
 }

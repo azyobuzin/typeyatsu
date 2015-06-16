@@ -1,5 +1,3 @@
-/// <reference path="typings.d.ts" />
-
 import common = require("./common");
 
 const roomsPageRoom = "roomsPage";

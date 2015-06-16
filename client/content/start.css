@@ -1,0 +1,26 @@
+#start-title {
+    margin-top: 150px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+#start-name-container {
+    text-align: center;
+}
+#start-name {
+    width: 200px;
+}
+#start-leaflet {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 200px;
+}
+#start-progress {
+    margin-top: 20px;
+    text-align: center;
+}
+#start-progress progress {
+    width: 150px;
+    height: 12px;
+}

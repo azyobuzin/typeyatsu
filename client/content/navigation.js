@@ -125,13 +125,6 @@
                     }
                 },
             }
-            )
+        )
     });
-
-    WinJS.Application.onready = function () {
-        WinJS.UI.processAll().done(function () {
-            WinJS.Navigation.navigate(Application.navigator.home);
-        });
-    };
-    WinJS.Application.start();
 })();

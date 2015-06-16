@@ -1,5 +1,3 @@
-/// <reference path="typings.d.ts" />
-
 import base64id = require("base64id");
 
 export class User {

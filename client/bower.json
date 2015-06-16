@@ -14,7 +14,6 @@
     "tests"
   ],
   "dependencies": {
-    "tmlib.js": "~0.5.2",
-    "winjs": "~4.0.1"
+    "tmlib.js": "~0.5.2"
   }
 }

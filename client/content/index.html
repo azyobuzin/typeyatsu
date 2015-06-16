@@ -3,12 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>タイピングバトルするやつ</title>
-		<link rel="stylesheet" href="../bower_components/winjs/css/ui-dark.css">
-		<script>var WinJS = require("winjs");</script>
-		<script src="index.js"></script>
+		<link rel="stylesheet" href="../node_modules/winjs/css/ui-dark.css">
+		<script>
+			var WinJS = require("winjs");
+			var io = require("socket.io-client");
+		</script>
+		<script src="navigation.js"></script>
+		<script src="js/index.js"></script>
 	</head>
-	<body>
+	<body class="win-type-body">
 		<div id="pageHost" data-win-control="Application.PageControlNavigator" data-win-options="{home: 'start.html'}"></div>
 	</body>
-
 </html>
