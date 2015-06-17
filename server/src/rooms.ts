@@ -39,8 +39,8 @@ export function initConnection(app: common.Application, user: common.User) {
     });
 
     function notifyUpdatedRoomMembers(room: common.Room) {
-        app.server.volatile.to(room.id).emit("updatedRoomMembers",
-            { id: room.id, members: room.members.map(v => v.name) });
+        app.server.volatile.to(room.id)
+            .emit("updatedRoomMembers", room.id, room.members.map(v => v.name));
         notifyUpdatedRooms();
     }
 

@@ -7,7 +7,10 @@ var app = new common.Application(io);
 
 io.on("connection", socket => {
     console.log("Connection: " + socket.id);
-    socket.on("disconnect", () => { console.log("Disconnect: " + socket.id) });
+    socket.on("disconnect", () => {
+        console.log("Disconnect: " + socket.id)
+        //TODO: ユーザーが参加中のルームの処理
+    });
 
     var user = app.createUser(socket);
     socket.on("updateName", name => { user.name = name });

@@ -3,13 +3,22 @@
 	<head>
 		<meta charset="utf-8">
 		<title>タイピングバトルするやつ</title>
-		<link rel="stylesheet" href="../bower_components/winjs/css/ui-dark.css">
-		<script>
-			/// <reference path="../typings/bundle.d.ts" />
-			WinJS.UI.Pages.define("rooms.html", {});
-		</script>
+		<script src="js/rooms.js"></script>
 	</head>
 	<body>
-		<h1>タイピングバトルするやつ</h1>
+		<div class="navigation">
+			<button data-win-control="WinJS.UI.BackButton"></button>
+			<h2 class="win-h2">対戦相手を探す</h2>
+		</div>
+
+		<div data-win-control="WinJS.UI.Pivot">
+			<div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'ルームに入る' }">
+		        <div id="rooms-availablerooms" data-win-control="WinJS.UI.Repeater" data-win-options="{  }"></div>
+		    </div>
+
+			<div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'ルームをつくる' }">
+				<button id="rooms-createroom" class="win-button win-button-primary" style="display:block;width:120px;margin-left:auto;margin-right:auto;">作成</button>
+			</div>
+		</div>
 	</body>
 </html>

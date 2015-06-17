@@ -9,4 +9,6 @@ declare module Application {
 
     var navigator: PageControlNavigator
     var socket: SocketIOClient.Socket
+    var socketId: string
+    var userName: string
 }
