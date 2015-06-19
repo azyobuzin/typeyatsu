@@ -5,15 +5,32 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "gulp"
   },
   "author": "azyobuzin",
   "license": "MIT",
   "devDependencies": {
-    "electron-prebuilt": "^0.27.3"
+    "del": "^1.2.0",
+    "electron-prebuilt": "^0.28.1",
+    "gulp": "^3.9.0",
+    "gulp-atom-electron": "^0.12.0",
+    "gulp-dtsm": "git+https://github.com/9joneg/gulp-dtsm.git",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-typescript": "^2.7.7",
+    "through2": "^2.0.0",
+    "typescript": "^1.5.0-beta"
   },
   "dependencies": {
     "socket.io-client": "^1.3.5",
     "winjs": "^4.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azyobuzin/typeyatsu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azyobuzin/typeyatsu/issues"
+  },
+  "homepage": "https://github.com/azyobuzin/typeyatsu#readme"
 }
