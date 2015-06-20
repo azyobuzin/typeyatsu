@@ -16,7 +16,13 @@ export function initConnection(app: common.Application, user: common.User) {
     }
 
     function notifyUpdatedRooms() {
-        app.server.volatile.to(roomsPageRoom).emit(updatedRoomsEvent, formatAvailableRooms());
+        app.server.to(roomsPageRoom).emit(updatedRoomsEvent, formatAvailableRooms());
+    }
+
+    function notifyUpdatedRoomMembers(room: common.Room) {
+        app.server.to(room.id)
+            .emit("updatedRoomMembers", room.id, room.members.map(v => v.name));
+        notifyUpdatedRooms();
     }
 
     socket.on("enterRoomsPage", () =>
@@ -27,7 +33,7 @@ export function initConnection(app: common.Application, user: common.User) {
     socket.on("createRoom", () => {
         var room = app.createRoom(user);
         socket.join(room.id).emit("createdRoom", room.id);
-        notifyUpdatedRooms();
+        notifyUpdatedRoomMembers(room);
     });
 
     socket.on("destroyRoom", (id: string) => {
@@ -37,12 +43,6 @@ export function initConnection(app: common.Application, user: common.User) {
         app.destroyRoom(id);
         notifyUpdatedRooms();
     });
-
-    function notifyUpdatedRoomMembers(room: common.Room) {
-        app.server.volatile.to(room.id)
-            .emit("updatedRoomMembers", room.id, room.members.map(v => v.name));
-        notifyUpdatedRooms();
-    }
 
     socket.on("enterRoom", (id: string) => {
         var room = app.getRoom(id);

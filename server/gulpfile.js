@@ -8,7 +8,7 @@ gulp.task("dtsm", function () {
 });
 
 gulp.task("default", ["clean", "dtsm"], function () {
-    var options = require("./tsconfig.json").compilerOptions;
+    var options = require("./src/tsconfig.json").compilerOptions;
     options.typescript = require("typescript");
     return gulp.src("src/**/*.ts")
         .pipe(plugins.typescript(options))

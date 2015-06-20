@@ -6,9 +6,9 @@ var io = socketIO();
 var app = new common.Application(io);
 
 io.on("connection", socket => {
-    console.log("Connection: " + socket.id);
+    console.log("Connection:", socket.id);
     socket.on("disconnect", () => {
-        console.log("Disconnect: " + socket.id)
+        console.log("Disconnect:", socket.id)
         //TODO: ユーザーが参加中のルームの処理
     });
 

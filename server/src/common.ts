@@ -23,8 +23,6 @@ export class Room {
     }
 }
 
-export var generateId = base64id.generateId;
-
 export class Application {
     private users: { [socketId: string]: User } = {};
     private availableRooms: { [id: string]: Room } = {};
@@ -53,7 +51,7 @@ export class Application {
     }
 
     createRoom(owner: User): Room {
-        var id = generateId();
+        var id = base64id.generateId();
         var room = new Room(id, owner);
         this.availableRooms[id] = room;
         return room;

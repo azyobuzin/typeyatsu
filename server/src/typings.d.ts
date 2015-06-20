@@ -18,12 +18,10 @@ declare module "base64id" {
 declare module SocketIO {
     interface Namespace {
         to(room: string): Namespace;
-        volatile: Namespace;
     }
 
     interface Server {
         to(room: string): Namespace;
         in(room: string): Namespace;
-        volatile: Namespace;
     }
 }
