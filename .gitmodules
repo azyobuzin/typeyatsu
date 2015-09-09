@@ -1,0 +1,3 @@
+[submodule "RomajiGenerator"]
+	path = RomajiGenerator
+	url = https://gist.github.com/702522f194a189cb88fd.git
