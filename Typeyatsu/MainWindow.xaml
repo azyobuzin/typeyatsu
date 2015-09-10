@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="タイピングゲームするやつ"
         Height="500" Width="700"
-        WindowStartupLocation="CenterScreen">
-    <local:TitlePage />
+        WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:TitlePageViewModel}">
+            <local:TitlePage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:PlayAloneStartPageViewModel}">
+            <local:PlayAloneStartPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:PlayAlonePageViewModel}">
+            <local:PlayAlonePage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:PlayAloneResultPageViewModel}">
+            <local:PlayAloneResultPage />
+        </DataTemplate>
+    </Window.Resources>
+    
+    <ContentControl Content="{Binding ContentViewModel}" />
 </Window>

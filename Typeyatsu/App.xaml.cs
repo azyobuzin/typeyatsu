@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Livet;
 
 namespace Typeyatsu
 {
@@ -13,5 +14,11 @@ namespace Typeyatsu
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            DispatcherHelper.UIDispatcher = this.Dispatcher;
+        }
+
+        public static Random Random = new Random();
     }
 }

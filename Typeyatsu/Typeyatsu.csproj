@@ -66,10 +66,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="KeyboardHelper.cs" />
+    <Compile Include="KeyEventViewModel.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="PlayAlonePage.xaml.cs">
+      <DependentUpon>PlayAlonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayAlonePageViewModel.cs" />
+    <Compile Include="PlayAloneResultPage.xaml.cs">
+      <DependentUpon>PlayAloneResultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayAloneResultPageViewModel.cs" />
+    <Compile Include="PlayAloneStartPage.xaml.cs">
+      <DependentUpon>PlayAloneStartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayAloneStartPageViewModel.cs" />
     <Compile Include="TitlePage.xaml.cs">
       <DependentUpon>TitlePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel.cs" />
+    <Compile Include="TitlePageViewModel.cs" />
+    <Compile Include="TransitionRequestEventArgs.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,6 +98,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PlayAlonePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayAloneResultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayAloneStartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TitlePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

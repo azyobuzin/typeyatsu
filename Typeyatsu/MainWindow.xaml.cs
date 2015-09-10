@@ -24,5 +24,12 @@ namespace Typeyatsu
         {
             InitializeComponent();
         }
+
+        private MainWindowViewModel ViewModel => this.DataContext as MainWindowViewModel;
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.ViewModel.OnKeyDown(e);
+        }
     }
 }
