@@ -20,7 +20,7 @@ namespace Typeyatsu
 
         private const int WordsCount = 20;
 
-        private readonly Keyword[] words = new Keyword[WordsCount];
+        private Keyword[] words;
 
         private int index = -1;
 
@@ -36,8 +36,8 @@ namespace Typeyatsu
 
         public string TimeString => this.time.Elapsed.TotalSeconds.ToString("F1");
 
-        public string Furigana => this.words[this.index].Furigana;
-        public string Word => this.words[this.index].Word;
+        public string Furigana => this.words?[this.index].Furigana;
+        public string Word => this.words?[this.index].Word;
 
         private List<string> availableRomajis;
 
@@ -80,6 +80,7 @@ namespace Typeyatsu
                     indices.Add(i);
             }
 
+            this.words = new Keyword[WordsCount];
             for (var i = 0; i < WordsCount; i++)
                 this.words[i] = Keywords.Hatena[indices[i]];
 
