@@ -8,7 +8,7 @@ using Typeyatsu.Core;
 
 namespace Typeyatsu.Server
 {
-    public class GameHub : Hub<IGameHubClient>
+    public class GameHub : Hub<IGameHubClient>, IGameHub
     {
         public override Task OnConnected()
         {
@@ -20,8 +20,8 @@ namespace Typeyatsu.Server
             {
                 PairManager.GetPlayer(rivalId).Rival = this.Context.ConnectionId;
 
-                this.Clients.Caller.OnRivalFound();
-                this.Clients.Client(rivalId).OnRivalFound();
+                var words = Keywords.GetRandomWords(10);
+                this.Clients.Clients(new[] { this.Context.ConnectionId, rivalId }).OnRivalFound(words);
             }
 
             return Task.FromResult(true);
@@ -39,6 +39,24 @@ namespace Typeyatsu.Server
             PairManager.RemovePlayer(this.Context.ConnectionId);
 
             return Task.FromResult(true);
+        }
+
+        public void NotifyState(GameState state)
+        {
+            var m = PairManager.GetPlayer(this.Context.ConnectionId);
+            m.LastState = state;
+            this.Clients.Client(m.Rival).OnRivalStateChanged(state);
+        }
+
+        public GameState GetLastRivalState()
+        {
+            return PairManager.GetPlayer(PairManager.GetPlayer(this.Context.ConnectionId).Rival).LastState;
+        }
+
+        public void NotifyGameOver(GameResult result)
+        {
+            this.Clients.Client(PairManager.GetPlayer(this.Context.ConnectionId).Rival)
+                .OnRivalGameOver(result);
         }
     }
 }

@@ -99,6 +99,14 @@
       <DependentUpon>PlayAloneStartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PlayAloneStartPageViewModel.cs" />
+    <Compile Include="PlayTogetherPage.xaml.cs">
+      <DependentUpon>PlayTogetherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayTogetherPageViewModel.cs" />
+    <Compile Include="PlayTogetherResultPage.xaml.cs">
+      <DependentUpon>PlayTogetherResultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayTogetherResultPageViewModel.cs" />
     <Compile Include="PlayTogetherStartPage.xaml.cs">
       <DependentUpon>PlayTogetherStartPage.xaml</DependentUpon>
     </Compile>
@@ -129,6 +137,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PlayAloneStartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayTogetherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayTogetherResultPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

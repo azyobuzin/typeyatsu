@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -13,7 +14,7 @@ namespace Typeyatsu.Core
         {
             if (string.IsNullOrEmpty(k.Furigana)) return false;
             if (k.Furigana.Length > 10) return false;
-            if (k.Word.All(x => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＺ0123456789０１２３４５６７８９ 　!?！？".Contains(x)))
+            if (k.Word.All(x => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＺ0123456789０１２３４５６７８９ 　!?！？-－".Contains(x)))
                 return false;
 
             for (var i = 0; i < k.Furigana.Length; i++)
@@ -52,6 +53,28 @@ namespace Typeyatsu.Core
                 }
             }
             Hatena = list.ToArray();
+        }
+
+        private static readonly Random random = new Random();
+
+        public static Keyword[] GetRandomWords(int count)
+        {
+            if (Hatena == null) Load();
+            Debug.Assert(Hatena != null);
+
+            var indices = new List<int>(count);
+            while (indices.Count < count)
+            {
+                var i = random.Next(Hatena.Length);
+                if (!indices.Contains(i))
+                    indices.Add(i);
+            }
+
+            var result = new Keyword[count];
+            for (var i = 0; i < count; i++)
+                result[i] = Hatena[indices[i]];
+
+            return result;
         }
     }
 }

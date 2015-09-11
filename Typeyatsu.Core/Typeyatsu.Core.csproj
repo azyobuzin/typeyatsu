@@ -43,9 +43,12 @@
     <Compile Include="..\RomajiGenerator\RomajiGenerator.cs">
       <Link>RomajiGenerator.cs</Link>
     </Compile>
+    <Compile Include="GameResult.cs" />
+    <Compile Include="IGameHub.cs" />
     <Compile Include="IGameHubClient.cs" />
     <Compile Include="Keyword.cs" />
     <Compile Include="Keywords.cs" />
+    <Compile Include="GameState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

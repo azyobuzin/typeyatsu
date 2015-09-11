@@ -18,7 +18,5 @@ namespace Typeyatsu
         {
             DispatcherHelper.UIDispatcher = this.Dispatcher;
         }
-
-        public static Random Random = new Random();
     }
 }

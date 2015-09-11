@@ -28,6 +28,12 @@
         <DataTemplate DataType="{x:Type local:PlayTogetherStartPageViewModel}">
             <local:PlayTogetherStartPage />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:PlayTogetherPageViewModel}">
+            <local:PlayTogetherPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:PlayTogetherResultPageViewModel}">
+            <local:PlayTogetherResultPage />
+        </DataTemplate>
     </Window.Resources>
     
     <ContentControl Content="{Binding ContentViewModel}" />

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Livet;
-using Livet.Commands;
-using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Client;
 using System.Windows.Threading;
+using Livet;
 using Livet.EventListeners;
 using Livet.Messaging;
+using Microsoft.AspNet.SignalR.Client;
+using Typeyatsu.Core;
 
 namespace Typeyatsu
 {
@@ -28,10 +24,13 @@ namespace Typeyatsu
 #endif
 
         private HubConnection connection;
+        private IHubProxy hub;
 
         private readonly LivetCompositeDisposable hubListeners = new LivetCompositeDisposable();
 
         public MainWindowViewModel Parent { get; }
+
+        private Keyword[] words;
 
         private bool isRivalFound;
         public bool IsRivalFound
@@ -89,7 +88,6 @@ namespace Typeyatsu
         private void OnDisconnected()
         {
             this.StopAll();
-            System.Diagnostics.Debugger.Break();
             DispatcherHelper.UIDispatcher.Invoke(() =>
             {
                 this.Messenger.Raise(new InteractionMessage("MsgDisconnected"));
@@ -100,18 +98,16 @@ namespace Typeyatsu
         public void Initialize()
         {
             this.connection = new HubConnection(ServerAddress);
-            var hub = this.connection.CreateHubProxy("GameHub");
-            
+            this.hub = this.connection.CreateHubProxy("GameHub");
+
             this.hubListeners.Add(new EventListener<Action>(
                 x => this.connection.Closed += x,
                 x => this.connection.Closed -= x,
                 this.OnDisconnected));
 
-            this.connection.StateChanged += s => System.Diagnostics.Trace.WriteLine($"State {s.OldState} -> {s.NewState}");
+            this.hubListeners.Add(this.hub.On(nameof(IGameHubClient.OnRivalDisconnected), this.OnDisconnected));
 
-            this.hubListeners.Add(hub.On("OnRivalDisconnected", this.OnDisconnected));
-
-            this.hubListeners.Add(hub.On("OnRivalFound", this.OnRivalFound));
+            this.hubListeners.Add(this.hub.On(nameof(IGameHubClient.OnRivalFound), new Action<Keyword[]>(this.OnRivalFound)));
 
             this.connection.Start();
         }
@@ -129,8 +125,9 @@ namespace Typeyatsu
             this.StopAll();
         }
 
-        private void OnRivalFound()
+        private void OnRivalFound(Keyword[] words)
         {
+            this.words = words;
             this.IsRivalFound = true;
             this.remainingTimeTimer = new DispatcherTimer(DispatcherPriority.Normal, DispatcherHelper.UIDispatcher);
             this.remainingTimeTimer.Interval = new TimeSpan(TimeSpan.TicksPerSecond * 1);
@@ -144,7 +141,10 @@ namespace Typeyatsu
 
         private void GoNext()
         {
-            this.StopAll();
+            this.remainingTimeTimer?.Stop();
+            this.hubListeners.Dispose();
+
+            this.Parent.ContentViewModel = new PlayTogetherPageViewModel(this.Parent, this.connection, this.hub, this.words);
         }
     }
 }

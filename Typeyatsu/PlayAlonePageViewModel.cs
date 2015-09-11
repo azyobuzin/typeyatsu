@@ -18,7 +18,7 @@ namespace Typeyatsu
 
         public MainWindowViewModel Parent { get; }
 
-        private const int WordsCount = 20;
+        private const int WordsCount = 10;
 
         private Keyword[] words;
 
@@ -72,17 +72,7 @@ namespace Typeyatsu
         [SuppressMessage("ReSharper", "ExplicitCallerInfoArgument")]
         public void Start()
         {
-            var indices = new List<int>(WordsCount);
-            while (indices.Count < WordsCount)
-            {
-                var i = App.Random.Next(Keywords.Hatena.Length);
-                if (!indices.Contains(i))
-                    indices.Add(i);
-            }
-
-            this.words = new Keyword[WordsCount];
-            for (var i = 0; i < WordsCount; i++)
-                this.words[i] = Keywords.Hatena[indices[i]];
+            this.words = Keywords.GetRandomWords(WordsCount);
 
             this.propertyChangedTimer = new DispatcherTimer(DispatcherPriority.Normal, DispatcherHelper.UIDispatcher);
             this.propertyChangedTimer.Interval = new TimeSpan(TimeSpan.TicksPerMillisecond * 50);
@@ -132,7 +122,7 @@ namespace Typeyatsu
 
             if (this.index >= WordsCount)
             {
-                this.Gameover();
+                this.GameOver();
                 return;
             }
 
@@ -153,7 +143,7 @@ namespace Typeyatsu
             this.propertyChangedTimer?.Stop();
         }
 
-        private void Gameover()
+        private void GameOver()
         {
             this.StopAll();
             this.Parent.ContentViewModel = new PlayAloneResultPageViewModel(

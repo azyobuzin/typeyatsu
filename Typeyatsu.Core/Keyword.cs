@@ -8,7 +8,7 @@
             this.Furigana = furigana;
         }
 
-        public string Word { get; }
-        public string Furigana { get; }
+        public string Word { get; set; }
+        public string Furigana { get; set; }
     }
 }

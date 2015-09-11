@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Typeyatsu.Core;
 
 namespace Typeyatsu.Server
 {
@@ -14,5 +15,6 @@ namespace Typeyatsu.Server
 
         public string Id { get; }
         public string Rival { get; set; }
+        public GameState LastState { get; set; }
     }
 }
