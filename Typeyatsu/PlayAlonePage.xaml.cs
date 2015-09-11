@@ -34,12 +34,16 @@ namespace Typeyatsu
                 if (f.Key == Key.Escape)
                 {
                     this.ViewModel.GoBack();
+                    e.Handled = true;
                     return;
                 }
 
                 char c;
                 if (KeyboardHelper.TryKeyToChar(f.Key, out c))
+                {
                     this.ViewModel.Input(c);
+                    e.Handled = true;
+                }
             };
 
             this.ViewModel.Start();

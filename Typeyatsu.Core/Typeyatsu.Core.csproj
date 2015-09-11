@@ -43,6 +43,7 @@
     <Compile Include="..\RomajiGenerator\RomajiGenerator.cs">
       <Link>RomajiGenerator.cs</Link>
     </Compile>
+    <Compile Include="IGameHubClient.cs" />
     <Compile Include="Keyword.cs" />
     <Compile Include="Keywords.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -25,6 +25,9 @@
         <DataTemplate DataType="{x:Type local:PlayAloneResultPageViewModel}">
             <local:PlayAloneResultPage />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:PlayTogetherStartPageViewModel}">
+            <local:PlayTogetherStartPage />
+        </DataTemplate>
     </Window.Resources>
     
     <ContentControl Content="{Binding ContentViewModel}" />

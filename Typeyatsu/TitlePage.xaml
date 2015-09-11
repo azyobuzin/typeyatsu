@@ -35,6 +35,7 @@
             </StackPanel.Style>
             
             <Button Content="1人で遊ぶ" Command="{Binding PlayAloneCommand}" />
+            <Button Content="2人で遊ぶ" Command="{Binding PlayTogetherCommand}" Margin="0,10,0,0" />
         </StackPanel>
 
         <ProgressBar Grid.Row="2" Width="400" Height="20" IsIndeterminate="True">

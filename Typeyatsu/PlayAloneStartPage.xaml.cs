@@ -36,14 +36,19 @@ namespace Typeyatsu
                     case Key.Enter:
                     case Key.Space:
                         this.ViewModel.GoNext();
+                        e.Handled = true;
                         break;
                     case Key.Escape:
                         this.ViewModel.GoBack();
+                        e.Handled = true;
                         break;
                     default:
                         char c;
                         if (KeyboardHelper.TryKeyToChar(f.Key, out c))
+                        {
                             this.ViewModel.AddTestInput(c);
+                            e.Handled = true;
+                        }
                         break;
                 }
             };

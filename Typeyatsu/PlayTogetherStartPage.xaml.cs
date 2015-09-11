@@ -16,16 +16,16 @@ using System.Windows.Shapes;
 namespace Typeyatsu
 {
     /// <summary>
-    /// PlayAloneResultPage.xaml の相互作用ロジック
+    /// PlayTogetherStartPage.xaml の相互作用ロジック
     /// </summary>
-    public partial class PlayAloneResultPage : UserControl
+    public partial class PlayTogetherStartPage : UserControl
     {
-        public PlayAloneResultPage()
+        public PlayTogetherStartPage()
         {
             InitializeComponent();
         }
 
-        private PlayAloneResultPageViewModel ViewModel => this.DataContext as PlayAloneResultPageViewModel;
+        private PlayTogetherStartPageViewModel ViewModel => this.DataContext as PlayTogetherStartPageViewModel;
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -33,14 +33,22 @@ namespace Typeyatsu
             {
                 switch (f.Key)
                 {
-                    case Key.Enter:
-                    case Key.Space:
                     case Key.Escape:
                         this.ViewModel.GoBack();
                         e.Handled = true;
                         break;
+                    default:
+                        char c;
+                        if (KeyboardHelper.TryKeyToChar(f.Key, out c))
+                        {
+                            this.ViewModel.AddTestInput(c);
+                            e.Handled = true;
+                        }
+                        break;
                 }
             };
+
+            this.ViewModel.Initialize();
         }
     }
 }

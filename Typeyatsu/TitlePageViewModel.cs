@@ -27,6 +27,15 @@ namespace Typeyatsu
         public ViewModelCommand PlayAloneCommand =>
             this.playAloneCommand ?? (this.playAloneCommand = new ViewModelCommand(this.PlayAlone));
 
+        private void PlayTogether()
+        {
+            this.Parent.ContentViewModel = new PlayTogetherStartPageViewModel(this.Parent);
+        }
+
+        private ViewModelCommand playTogetherCommand;
+        public ViewModelCommand PlayTogetherCommand =>
+            this.playTogetherCommand ?? (this.playTogetherCommand = new ViewModelCommand(this.PlayTogether));
+
         private bool isLoading;
         public bool IsLoading
         {

@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Column="0" Grid.Row="1" Text="タイム: " TextAlignment="Right" />
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Time, StringFormat=\{0\} 秒}" />
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Time, StringFormat={}{0} 秒}" />
         
         <TextBlock Grid.Column="0" Grid.Row="2" Text="速度: " TextAlignment="Right" />
         <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding TypePerSec, StringFormat={}{0} キー/秒}" />

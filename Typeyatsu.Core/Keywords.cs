@@ -12,7 +12,7 @@ namespace Typeyatsu.Core
         private static bool FilterKeyword(Keyword k)
         {
             if (string.IsNullOrEmpty(k.Furigana)) return false;
-            if (k.Furigana.Length > 16) return false;
+            if (k.Furigana.Length > 10) return false;
             if (k.Word.All(x => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＺ0123456789０１２３４５６７８９ 　!?！？".Contains(x)))
                 return false;
 
@@ -35,7 +35,7 @@ namespace Typeyatsu.Core
 
         public static void Load()
         {
-            var list = new List<Keyword>(400000);
+            var list = new List<Keyword>(340000);
             using (var sr = new StringReader(Properties.Resources.keywordlist_furigana))
             {
                 while (true)
