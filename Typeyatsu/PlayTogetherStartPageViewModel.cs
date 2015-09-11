@@ -8,6 +8,8 @@ using Livet.Commands;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Client;
 using System.Windows.Threading;
+using Livet.EventListeners;
+using Livet.Messaging;
 
 namespace Typeyatsu
 {
@@ -84,15 +86,30 @@ namespace Typeyatsu
             }
         }
 
+        private void OnDisconnected()
+        {
+            this.StopAll();
+            System.Diagnostics.Debugger.Break();
+            DispatcherHelper.UIDispatcher.Invoke(() =>
+            {
+                this.Messenger.Raise(new InteractionMessage("MsgDisconnected"));
+                this.Parent.ContentViewModel = new TitlePageViewModel(this.Parent);
+            });
+        }
+
         public void Initialize()
         {
             this.connection = new HubConnection(ServerAddress);
             var hub = this.connection.CreateHubProxy("GameHub");
+            
+            this.hubListeners.Add(new EventListener<Action>(
+                x => this.connection.Closed += x,
+                x => this.connection.Closed -= x,
+                this.OnDisconnected));
 
-            this.hubListeners.Add(hub.On("OnRivalDisconnected", () =>
-            {
+            this.connection.StateChanged += s => System.Diagnostics.Trace.WriteLine($"State {s.OldState} -> {s.NewState}");
 
-            }));
+            this.hubListeners.Add(hub.On("OnRivalDisconnected", this.OnDisconnected));
 
             this.hubListeners.Add(hub.On("OnRivalFound", this.OnRivalFound));
 

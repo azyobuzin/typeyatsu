@@ -18,6 +18,8 @@ namespace Typeyatsu.Server
 
             if (rivalId != null)
             {
+                PairManager.GetPlayer(rivalId).Rival = this.Context.ConnectionId;
+
                 this.Clients.Caller.OnRivalFound();
                 this.Clients.Client(rivalId).OnRivalFound();
             }
@@ -32,7 +34,9 @@ namespace Typeyatsu.Server
 
             var m = PairManager.GetPlayer(this.Context.ConnectionId);
             if (m.Rival != null)
-                this.Clients.User(m.Rival).OnRivalDisconnected();
+                this.Clients.Client(m.Rival).OnRivalDisconnected();
+
+            PairManager.RemovePlayer(this.Context.ConnectionId);
 
             return Task.FromResult(true);
         }
