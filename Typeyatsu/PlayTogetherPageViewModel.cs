@@ -48,8 +48,8 @@ namespace Typeyatsu
 
         public string TimeString => this.time.Elapsed.TotalSeconds.ToString("F1");
 
-        public string Furigana => this.words?[this.index].Furigana;
-        public string Word => this.words?[this.index].Word;
+        public string Furigana => this.index >= 0 ? this.words?[this.index].Furigana : null;
+        public string Word => this.index >= 0 ? this.words?[this.index].Word : null;
 
         private List<string> availableRomajis;
 
@@ -171,20 +171,20 @@ namespace Typeyatsu
         private async void GameOver()
         {
             this.time.Stop();
-            this.isGameOver = true;
             this.propertyChangedTimer?.Stop();
 
             if (!this.isRivalDisconnected)
             {
-                await Task.WhenAll(
-                    this.NotifyState(),
-                    this.hub.Invoke(nameof(IGameHub.NotifyGameOver), new GameResult()
-                    {
-                        Time = this.time.Elapsed,
-                        TypeCount = this.typeCount,
-                        MistypeCount = this.mistypeCount
-                    }));
+                await this.NotifyState();
+                await this.hub.Invoke(nameof(IGameHub.NotifyGameOver), new GameResult()
+                {
+                    Time = this.time.Elapsed,
+                    TypeCount = this.typeCount,
+                    MistypeCount = this.mistypeCount
+                });
             }
+
+            this.isGameOver = true;
 
             if (this.isRivalDisconnected || this.rivalResult != null)
                 this.GoNext();

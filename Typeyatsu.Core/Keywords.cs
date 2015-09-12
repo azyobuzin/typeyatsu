@@ -14,7 +14,7 @@ namespace Typeyatsu.Core
         {
             if (string.IsNullOrEmpty(k.Furigana)) return false;
             if (k.Furigana.Length > 10) return false;
-            if (k.Word.All(x => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＺ0123456789０１２３４５６７８９ 　!?！？-－".Contains(x)))
+            if (k.Word.All(x => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＺ0123456789０１２３４５６７８９ 　!?！？-－&#;＆＃；".Contains(x)))
                 return false;
 
             for (var i = 0; i < k.Furigana.Length; i++)

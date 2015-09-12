@@ -36,8 +36,8 @@ namespace Typeyatsu
 
         public string TimeString => this.time.Elapsed.TotalSeconds.ToString("F1");
 
-        public string Furigana => this.words?[this.index].Furigana;
-        public string Word => this.words?[this.index].Word;
+        public string Furigana => this.index >= 0 ? this.words?[this.index].Furigana : null;
+        public string Word => this.index >= 0 ? this.words?[this.index].Word : null;
 
         private List<string> availableRomajis;
 
